@@ -1,0 +1,293 @@
+char val;
+int enA = 9;
+int in1 = 3;
+int in2 = 4;
+// motor two
+int enB = 10;
+int in3 = 5;
+int in4 = 6;
+
+int cepet = 100;
+int normal = 100;
+int lambat = 100;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(enA, OUTPUT);
+  pinMode(enB, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+}
+
+void loop() {
+if( Serial.available() >0 ) {
+    val = Serial.read();
+    Serial.println(val); 
+  if( val == 'U' ) {
+    maju();
+    }
+  else if( val == 'F' ) {
+    maju();
+    }
+  else if( val == 'D' ) { 
+    mundur();
+    }
+  else if( val == 'B' ) {
+    mundur();
+    }    
+  else if( val == 'L' ) {
+    kiri();
+    }
+  else if( val == 'R' ) {
+    kanan();
+    }
+  else if( val == 'C' ) {
+    berenti();
+    }
+  else if( val == 'S' ) {
+    berenti();
+    }    
+  else if( val == 'a' ) {
+    digitalWrite(11, LOW); 
+    digitalWrite(12, LOW); 
+    digitalWrite(2, HIGH);
+    digitalWrite(7, HIGH);
+    }
+  else if( val == 'c' ) {
+    digitalWrite(11, HIGH); 
+    digitalWrite(12, HIGH); 
+    digitalWrite(2, LOW);
+    digitalWrite(7, LOW);
+    }
+  else if( val == 'b' ) {
+    digitalWrite(11, HIGH); 
+    digitalWrite(12, HIGH); 
+    digitalWrite(2, HIGH);
+    digitalWrite(7, HIGH);
+    }
+  else if( val == 'd' ) {
+    kedip();
+    }
+  else if( val == 'e' ) {
+    kedipp();
+    }  
+  else if( val == 'f' ) {
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  delay (120);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW); 
+  delay (120);
+    }
+  else if( val == 'g' ) {
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);
+  delay (120);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW); 
+  delay (120);
+    }  
+}
+}
+  void maju()
+{
+  digitalWrite(7, HIGH);
+  digitalWrite(12, HIGH);
+  digitalWrite(2, LOW);
+  digitalWrite(11, LOW);
+  // turn on motor A
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  analogWrite(enA, normal);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+  analogWrite(enB, normal);  // set speed to 200 out of possible range 0~255
+
+  //digitalWrite(2, HIGH);
+  //digitalWrite(7, HIGH);
+  //digitalWrite(11, LOW);
+  //digitalWrite(12, LOW);
+  // turn on motor A
+  //digitalWrite(in1, HIGH);
+  //digitalWrite(in2, LOW);
+  //analogWrite(enA, normal);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  //digitalWrite(in3, HIGH);
+  //digitalWrite(in4, LOW);
+  //analogWrite(enB, normal );  // set speed to 200 out of possible range 0~255
+}
+
+  void kanan()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW);
+  // turn on motor A
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  analogWrite(enA, normal);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+  analogWrite(enB, normal );  // set speed to 200 out of possible range 0~255
+  
+  //digitalWrite(2, HIGH);
+  //digitalWrite(11, HIGH);
+  //digitalWrite(12, LOW);
+  //digitalWrite(7, LOW);
+  // turn on motor A
+  //digitalWrite(in1, HIGH);
+  //digitalWrite(in2, LOW);
+  //analogWrite(enA, lambat);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  //digitalWrite(in3, LOW);
+  //digitalWrite(in4, HIGH);
+  //analogWrite(enB, lambat );  // set speed to 200 out of possible range 0~255
+}
+
+  void kiri()
+{
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  // turn on motor A
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  analogWrite(enA, normal);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+  analogWrite(enB, normal );  // set speed to 200 out of possible range 0~255
+
+  //digitalWrite(7, HIGH);
+  //digitalWrite(12, HIGH);
+  //digitalWrite(2, LOW);
+  //digitalWrite(11, LOW);
+  // turn on motor A
+  //digitalWrite(in1, LOW);
+  //digitalWrite(in2, HIGH);
+  //analogWrite(enA, lambat);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  //digitalWrite(in3, HIGH);
+  //digitalWrite(in4, LOW);
+  //analogWrite(enB, lambat);  // set speed to 200 out of possible range 0~255
+}
+
+  void mundur()
+{
+  digitalWrite(2, HIGH);
+  digitalWrite(11, HIGH);
+  digitalWrite(12, LOW);
+  digitalWrite(7, LOW);
+  // turn on motor A
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  analogWrite(enA, normal);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+  analogWrite(enB, normal );  // set speed to 200 out of possible range 0~255
+
+  //digitalWrite(11, HIGH);
+  //digitalWrite(12, HIGH);
+  //digitalWrite(2, LOW);
+  //digitalWrite(7, LOW);
+  // turn on motor A
+  //digitalWrite(in1, LOW);
+  //digitalWrite(in2, HIGH);
+  //analogWrite(enA, normal);   // set speed to 200 out of possible range 0~255
+  
+  // turn on motor B
+  //digitalWrite(in3, LOW);
+  //digitalWrite(in4, HIGH);
+  //analogWrite(enB, normal );  // set speed to 200 out of possible range 0~255
+  
+//  digitalWrite(11, LOW);
+//  digitalWrite(12, LOW);
+//  kedip();
+}
+
+void berenti()
+{
+  // now turn off motors
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);  
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW);
+//  var1 = 0;
+//   while(var1 < 2){
+//     lampu();
+//     var1++;
+//   }
+//   while(true){ 
+//   lampu();
+//   }
+}
+void kedip()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  delay (120);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  delay (120);
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  delay (120);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  delay(120);
+    digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);
+  delay (120);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW);
+  delay (120);
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);
+  delay (120);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW);
+  }
+void kedipp()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);
+  delay (120);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW);
+  delay (120);
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);
+  delay (120);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(7, LOW);
+  }
